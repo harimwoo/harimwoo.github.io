@@ -1,4 +1,36 @@
 backend:
   name: turbo-github
   turbo_site_id: fbe71dbd-84a8-4484-ae3e-2563f54b1239
+  branch: main
 
+site_url: https://harimwoo.github.io
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: posts
+    label: Writing
+    folder: _posts
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: Title, name: title, widget: string }
+      - label: Date
+        name: date
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+      - { label: Categories, name: categories, widget: list }
+      - label: Visibility
+        name: layout
+        widget: select
+        default: post
+        options:
+          - { label: Public, value: post }
+          - { label: Locked, value: locked }
+      - { label: Content, name: body, widget: markdown }
