@@ -1,0 +1,9 @@
+---
+layout: null
+---
+{% assign locked_posts = site.posts | where: 'layout', 'locked' %}
+{
+  {% for post in locked_posts %}
+    {{ post.id | jsonify }}: {{ post.content | markdownify | jsonify }}{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+}
