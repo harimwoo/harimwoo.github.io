@@ -9,22 +9,33 @@ layout: post
   <p id="message" role="status"></p>
 </form>
 
-<div id="locked-note" hidden>
-  {{ content }}
-</div>
+<div id="locked-note" hidden></div>
 
 <script>
   const form = document.getElementById("unlock-form");
   const password = {{ site.note_password | jsonify }};
+  const postId = {{ page.id | jsonify }};
+  const contentUrl = {{ '/locked-content.json' | relative_url | jsonify }};
 
-  form.addEventListener("submit", function (event) {
+  form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    if (document.getElementById("password").value === password) {
-      document.getElementById("locked-note").hidden = false;
-      form.hidden = true;
-    } else {
+    if (document.getElementById("password").value !== password) {
       document.getElementById("message").textContent = "Incorrect password.";
+      return;
+    }
+
+    try {
+      const response = await fetch(contentUrl);
+      if (!response.ok) throw new Error("Could not load post");
+      const posts = await response.json();
+      if (typeof posts[postId] !== "string") throw new Error("Post not found");
+      const note = document.getElementById("locked-note");
+      note.innerHTML = posts[postId];
+      note.hidden = false;
+      form.hidden = true;
+    } catch (error) {
+      document.getElementById("message").textContent = "Could not load this post. Please try again.";
     }
   });
 </script>
