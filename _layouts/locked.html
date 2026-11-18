@@ -1,0 +1,30 @@
+---
+layout: post
+---
+
+<form id="unlock-form">
+  <label for="password">Password</label>
+  <input id="password" type="password" required>
+  <button type="submit">Unlock</button>
+  <p id="message" role="status"></p>
+</form>
+
+<div id="locked-note" hidden>
+  {{ content }}
+</div>
+
+<script>
+  const form = document.getElementById("unlock-form");
+  const password = {{ site.note_password | jsonify }};
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (document.getElementById("password").value === password) {
+      document.getElementById("locked-note").hidden = false;
+      form.hidden = true;
+    } else {
+      document.getElementById("message").textContent = "Incorrect password.";
+    }
+  });
+</script>
