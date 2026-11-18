@@ -5,14 +5,22 @@ layout: default
 <h1>Archive</h1>
 <p>...</p>
 
-{% for category in site.categories %}
-  <h2>{{ category[0] | capitalize }}</h2>
-  <ul>
-    {% for post in category[1] %}
-      <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <span>{{ post.date | date: "%B %-d, %Y" }}</span>
-      </li>
-    {% endfor %}
-  </ul>
+{% assign shown_categories = "" | split: "," %}
+
+{% for post in site.posts %}
+  {% for category in post.categories %}
+    {% unless shown_categories contains category %}
+      {% assign shown_categories = shown_categories | push: category %}
+
+      <h2>{{ category }}</h2>
+      <ul>
+        {% for item in site.categories[category] %}
+          <li>
+            <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            <span>{{ item.date | date: "%B %-d, %Y" }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endunless %}
+  {% endfor %}
 {% endfor %}
