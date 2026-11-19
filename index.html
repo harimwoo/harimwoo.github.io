@@ -36,7 +36,14 @@
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <h1>Archive</h1>
+        <style>
+  .archive-heading { display: flex; align-items: center; gap: 12px; }
+  .archive-add { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; color: #777; font-size: 24px; font-weight: normal; text-decoration: none; }
+  .archive-add:hover { color: #222; text-decoration: none; }
+  .archive-add:focus-visible { outline: 2px solid #777; outline-offset: 2px; }
+</style>
+
+<h1 class="archive-heading">Archive <a class="archive-add" href="/admin/#/collections/posts/new" aria-label="Create a new post" title="Create a new post">+</a></h1>
 <p>...</p>
 
 
