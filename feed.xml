@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Harim Woo</title>
+  <link href="https://harimwoo.github.io/feed.xml" rel="self" />
+  <link href="https://harimwoo.github.io/" />
+  <updated>2026-11-19T14:17:21+00:00</updated>
+  <id>https://harimwoo.github.io/feed.xml</id>
+  
+  
+    <entry>
+      <title>감사일기2</title>
+      <link href="https://harimwoo.github.io/%EA%B0%90%EC%82%AC/2026/11/18/%EA%B0%90%EC%82%AC%EC%9D%BC%EA%B8%B02.html" />
+      <id>https://harimwoo.github.io/%EA%B0%90%EC%82%AC/2026/11/18/%EA%B0%90%EC%82%AC%EC%9D%BC%EA%B8%B02</id>
+      <updated>2026-11-18T00:00:00+00:00</updated>
+      <content type="html">&lt;p&gt;오늘은 무슨일이 있었더라&lt;/p&gt;
+
+&lt;p&gt;어떤 생각이더라&lt;/p&gt;
+
+&lt;p&gt;그냥 그런하루였다&lt;/p&gt;
+</content>
+    </entry>
+  
+    <entry>
+      <title>별의 감옥</title>
+      <link href="https://harimwoo.github.io/%EC%8B%9C/2026/11/15/%EB%B3%84%EC%9D%98-%EA%B0%90%EC%98%A5.html" />
+      <id>https://harimwoo.github.io/%EC%8B%9C/2026/11/15/%EB%B3%84%EC%9D%98%20%EA%B0%90%EC%98%A5</id>
+      <updated>2026-11-15T00:00:00+00:00</updated>
+      <content type="html">&lt;p&gt;별의 감옥 / 장석남&lt;/p&gt;
+
+&lt;p&gt;저 입술을 깨물며 빛나는 별 &lt;br /&gt;
+새벽 거리를 저미는 저 별 &lt;br /&gt;
+녹아 마음에 스미다가 &lt;br /&gt;
+파르르 떨리면 &lt;br /&gt;
+나는 이미 감옥을 한 채 삼켰구나 &lt;br /&gt;
+&lt;br /&gt;
+유일한 문 밖인 저 별&lt;/p&gt;
+</content>
+    </entry>
+  
+</feed>
