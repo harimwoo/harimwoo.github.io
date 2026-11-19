@@ -1,10 +1,41 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Harim Woo</title>
-      <style>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Harim Woo | Writing Editor</title>
+    <style>
+      body, input, textarea, select, button, [data-slate-editor] {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+      }
+
+      body, [class*="EditorContainer"] {
+        color: #111;
+        background-color: #fdfdfd !important;
+      }
+
+      [class*="ToolbarContainer"] {
+        background-color: #fdfdfd !important;
+        border-bottom: 1px solid #e8e8e8;
+        box-shadow: none !important;
+      }
+
+      input:not([type="checkbox"]):not([type="radio"]), textarea, select, [data-slate-editor] {
+        color: #111 !important;
+        border-color: #e8e8e8 !important;
+      }
+
+      [class*="ControlLabel"] {
+        color: #828282 !important;
+        background-color: #fdfdfd !important;
+      }
+
+      [class*="PublishButton"] {
+        background-color: #2a7ae2 !important;
+        border-color: #2a7ae2 !important;
+        color: #fff !important;
+      }
+
       @media (max-width: 800px) {
         div:has([data-slate-editor]),
         div:has([data-slate-editor]) > div {
@@ -19,8 +50,8 @@
         }
       }
     </style>
-</head>
-<body>
-  <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-</body>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  </body>
 </html>
