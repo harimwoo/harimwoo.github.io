@@ -48,9 +48,10 @@ function stylePasswordPage(html) {
   html = replaceRequired(html, '<div id="staticrypt_content" class="staticrypt-content hidden">',
     '<div id="staticrypt_content" class="staticrypt-content hidden"><header class="writing-header">Harim Woo</header>');
   html = replaceRequired(html, '<div class="staticrypt-password-container">',
-    '<label class="writing-label" for="staticrypt-password">Password</label><p class="writing-hint" id="password-hint">hint: birthday</p><div class="staticrypt-password-container">');
+    '<label class="writing-label" for="staticrypt-password">Password</label><p class="writing-hint" id="password-hint">**hint**: birthday</p><div class="staticrypt-password-container">');
   html = replaceRequired(html, 'id="staticrypt-password"',
     'id="staticrypt-password" inputmode="numeric" aria-describedby="password-hint" autocomplete="off"');
+  html = replaceRequired(html, '</form>', '<p id="writing-unlock-status" class="writing-status" role="status" aria-live="polite"></p></form>');
   html = replaceRequired(html, '</style>', `
     * { box-sizing: border-box; }
     .staticrypt-content { min-height: 100vh; height: auto; margin: 0; background: #fff; color: #242323; font-family: Georgia, 'Times New Roman', serif; }
@@ -65,8 +66,25 @@ function stylePasswordPage(html) {
     .staticrypt-form input[type="password"]:focus, .staticrypt-form input[type="text"]:focus { outline: 2px solid #868686; outline-offset: 2px; }
     .staticrypt-form .staticrypt-decrypt-button { height: 45px; margin-top: 16px; padding: 0; border: 1px solid #262626; border-radius: 3px; background: #262626; color: #fff; text-transform: none; font: 14px Georgia, 'Times New Roman', serif; }
     .staticrypt-form .staticrypt-decrypt-button:hover, .staticrypt-form .staticrypt-decrypt-button:focus { background: #444; filter: none; }
+    .staticrypt-form .staticrypt-decrypt-button:disabled { opacity: .5; cursor: not-allowed; }
+    .writing-status { margin: 14px 0 0; color: #825047; font: 13px/1.5 Georgia, 'Times New Roman', serif; }
+    .writing-status:empty { display: none; }
     @media (max-width: 420px) { .writing-header { padding: 16px 20px; } .staticrypt-form { padding: 32px 26px; } }
   </style>`);
+  const originalHandler = `            // handle password form submission
+            document.getElementById("staticrypt-form").addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const password = document.getElementById("staticrypt-password").value,
+                    isRememberChecked = document.getElementById("staticrypt-remember").checked;
+
+                const { isSuccessful } = await staticrypt.handleDecryptionOfPage(password, isRememberChecked);
+
+                if (!isSuccessful) {
+                    alert(templateError);
+                }
+            });`;
+  html = replaceRequired(html, originalHandler, fs.readFileSync('scripts/lock-screen.js', 'utf8'));
   return html;
 }
 
