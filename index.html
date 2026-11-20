@@ -38,12 +38,16 @@
       <div class="wrapper">
         <style>
   .archive-heading { display: flex; align-items: center; gap: 12px; }
-  .archive-add { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; color: #777; font-size: 24px; font-weight: normal; text-decoration: none; }
+  .archive-add { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-left: -6px; color: #777; font-size: 24px; font-weight: normal; text-decoration: none; }
   .archive-add:hover { color: #222; text-decoration: none; }
   .archive-add:focus-visible { outline: 2px solid #777; outline-offset: 2px; }
+  .archive-chart { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; opacity: .55; }
+  .archive-chart:hover { opacity: .85; }
+  .archive-chart:focus-visible { outline: 2px solid #777; outline-offset: 2px; }
+  .archive-chart img { width: 18px; height: 18px; }
 </style>
 
-<h1 class="archive-heading">Archive <a class="archive-add" href="/admin/#/collections/posts/new" aria-label="Create a new post" title="Create a new post">+</a></h1>
+<h1 class="archive-heading">Archive <a class="archive-chart" href="/analytics.html" aria-label="Open analytics" title="Open analytics"><img src="https://cdn.jsdelivr.net/npm/lucide-static@0.468.0/icons/chart-no-axes-column-increasing.svg" alt=""></a> <a class="archive-add" href="/admin/#/collections/posts/new" aria-label="Create a new post" title="Create a new post">+</a></h1>
 <p>...</p>
 
 
