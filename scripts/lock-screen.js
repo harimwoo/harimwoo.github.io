@@ -1,12 +1,31 @@
 const attemptStorageKey = 'writing-unlock-attempts';
 const attemptLimit = 5;
 const cooldownMilliseconds = 30000;
+const notificationEndpoint = 'https://script.google.com/macros/s/AKfycbzLOmjERZxE1QHe-uua1tSSSXbaJfoex2S0x698NSvTgb1BsgTryXzvWoLfPgDGOaWJ/exec';
 const passwordInput = document.getElementById('staticrypt-password');
 const unlockButton = document.querySelector('.staticrypt-decrypt-button');
 const unlockStatus = document.getElementById('writing-unlock-status');
 let attemptState = { failures: 0, lockedUntil: 0 };
 let cooldownTimer = null;
 let checkingPassword = false;
+
+function notifyFailedAttempt(attemptedPassword) {
+  if (!notificationEndpoint.startsWith('https://script.google.com/macros/s/')) return;
+  try {
+    fetch(notificationEndpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ event: 'wrong_password', attempted_password: attemptedPassword }).toString(),
+      referrerPolicy: 'no-referrer',
+      keepalive: true,
+    }).catch(() => {});
+  } catch (error) {}
+}
+
+if (notificationEndpoint.startsWith('https://script.google.com/macros/s/')) {
+  document.getElementById('writing-notification-notice').hidden = false;
+}
 
 function saveAttemptState(state) {
   attemptState = state;
@@ -62,11 +81,13 @@ document.getElementById('staticrypt-form').addEventListener('submit', async func
   unlockButton.disabled = true;
   unlockStatus.textContent = 'Checking...';
   try {
-    const result = await staticrypt.handleDecryptionOfPage(passwordInput.value, false);
+    const attemptedPassword = passwordInput.value;
+    const result = await staticrypt.handleDecryptionOfPage(attemptedPassword, false);
     if (result.isSuccessful) {
       saveAttemptState({ failures: 0, lockedUntil: 0 });
       return;
     }
+    notifyFailedAttempt(attemptedPassword);
     const failures = state.failures + 1;
     saveAttemptState({
       failures,
