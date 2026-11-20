@@ -48,7 +48,7 @@ function stylePasswordPage(html) {
   html = replaceRequired(html, '<div id="staticrypt_content" class="staticrypt-content hidden">',
     '<div id="staticrypt_content" class="staticrypt-content hidden"><header class="writing-header">Harim Woo</header>');
   html = replaceRequired(html, '<div class="staticrypt-password-container">',
-    '<label class="writing-label" for="staticrypt-password">Password</label><p class="writing-hint" id="password-hint">**hint**: birthday</p><p id="writing-notification-notice" class="writing-notice" hidden>Incorrect entries are emailed to the site owner.</p><div class="staticrypt-password-container">');
+    '<label class="writing-label" for="staticrypt-password">Password</label><p class="writing-hint" id="password-hint">**hint**: birthday</p><div class="staticrypt-password-container">');
   html = replaceRequired(html, 'id="staticrypt-password"',
     'id="staticrypt-password" inputmode="numeric" aria-describedby="password-hint" autocomplete="off"');
   html = replaceRequired(html, '</form>', '<p id="writing-unlock-status" class="writing-status" role="status" aria-live="polite"></p></form>');
@@ -61,7 +61,6 @@ function stylePasswordPage(html) {
     .staticrypt-instructions, .staticrypt-hr, .staticrypt-toggle-password-visibility { display: none; }
     .writing-label { display: block; color: #555; font: 18px/1.4 Georgia, 'Times New Roman', serif; }
     .writing-hint { margin: 4px 0 18px; color: #888; font: italic 13px/1.5 Georgia, 'Times New Roman', serif; }
-    .writing-notice { margin: 0 0 18px; color: #666; font: 13px/1.5 Georgia, 'Times New Roman', serif; }
     .staticrypt-password-container { margin: 0; background: #fff; }
     .staticrypt-form input[type="password"], .staticrypt-form input[type="text"] { width: 100%; height: 45px; padding: 0 13px; border: 1px solid #cecece; border-radius: 3px; background: #fff; font: 16px Georgia, 'Times New Roman', serif; }
     .staticrypt-form input[type="password"]:focus, .staticrypt-form input[type="text"]:focus { outline: 2px solid #868686; outline-offset: 2px; }
