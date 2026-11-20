@@ -1,7 +1,7 @@
 const attemptStorageKey = 'writing-unlock-attempts';
 const attemptLimit = 5;
 const cooldownMilliseconds = 30000;
-const notificationEndpoint = 'https://script.google.com/macros/s/AKfycbzLOmjERZxE1QHe-uua1tSSSXbaJfoex2S0x698NSvTgb1BsgTryXzvWoLfPgDGOaWJ/exec';
+const notificationEndpoint = 'REPLACE_WITH_GOOGLE_APPS_SCRIPT_WEB_APP_URL';
 const passwordInput = document.getElementById('staticrypt-password');
 const unlockButton = document.querySelector('.staticrypt-decrypt-button');
 const unlockStatus = document.getElementById('writing-unlock-status');
@@ -21,10 +21,6 @@ function notifyFailedAttempt(attemptedPassword) {
       keepalive: true,
     }).catch(() => {});
   } catch (error) {}
-}
-
-if (notificationEndpoint.startsWith('https://script.google.com/macros/s/')) {
-  document.getElementById('writing-notification-notice').hidden = false;
 }
 
 function saveAttemptState(state) {
